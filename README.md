@@ -780,9 +780,9 @@ class BillingApp:
         out.append(f"Total: {total:.2f}")
         messagebox.showinfo("Invoice Preview", "\n".join(out))
 
-# -----------------------------
+# ----------------------------
 # Run App
-# -----------------------------
+# ----------------------------
 if __name__ == "__main__":
     root = tk.Tk()
     app = BillingApp(root)
