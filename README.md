@@ -221,12 +221,7 @@ button:hover{opacity:0.9;}
 </div>
 
 <!-- PREVIEW MODAL -->
-<div id="preview-modal" class="modal hidden">
-  <div class="modal-inner">
-    <button class="close" id="close-preview">✕</button>
-    <div id="preview-content"></div>
-  </div>
-</div>
+
 
 
 <script>
