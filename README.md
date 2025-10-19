@@ -225,11 +225,9 @@ button:hover{opacity:0.9;}
   <div class="modal-inner">
     <button class="close" id="close-preview">✕</button>
     <div id="preview-content"></div>
-    <div class="actions">
-      <button id="preview-print">🖨️ Print / Download</button>
-    </div>
   </div>
 </div>
+
 
 <script>
 (function(){
@@ -338,17 +336,12 @@ button:hover{opacity:0.9;}
     show('history');
   };
 
-  btnPrint.onclick=()=>{
-    openPreview(buildInvoiceHtml({
-      invNo:invNumber.value||'Preview',
-      date:invDate.value||new Date().toISOString().slice(0,10),
-      customer:custName.value||'Customer',
-      items,
-      subtotal:Number(subtotalEl.innerText),
-      gstRate:Number(gstRateEl.value),
-      total:Number(grandtotalEl.innerText)
-    }));
-  };
+function openPreview(html){
+  previewContent.innerHTML=html;
+  previewModal.classList.remove('hidden');
+  setTimeout(()=>window.print(),400); // auto open print after showing
+}
+
 
   btnClear.onclick=()=>{
     if(confirm("Clear all items?")){items=[];renderItems();}
@@ -422,7 +415,8 @@ button:hover{opacity:0.9;}
     previewModal.classList.remove('hidden');
   }
   closePreview.onclick=()=>previewModal.classList.add('hidden');
-  previewPrint.onclick=()=>{previewModal.classList.add('hidden');setTimeout(()=>window.print(),300);};
+ const previewPrint=document.getElementById('preview-print');
+
 
   (function init(){
     invDate.value=new Date().toISOString().slice(0,10);
